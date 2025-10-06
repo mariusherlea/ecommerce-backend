@@ -403,31 +403,30 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiOrdedOrded extends Struct.CollectionTypeSchema {
-  collectionName: 'ordeds';
+export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
+  collectionName: 'orders';
   info: {
     displayName: 'Order';
-    pluralName: 'ordeds';
-    singularName: 'orded';
+    pluralName: 'orders';
+    singularName: 'order';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    address: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    customerName: Schema.Attribute.String & Schema.Attribute.Required;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    email: Schema.Attribute.Email;
+    items: Schema.Attribute.Component<'order.order-item', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::orded.orded'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
       Schema.Attribute.Private;
-    orderStatus: Schema.Attribute.Enumeration<['pending', 'paid', 'failed']>;
-    products: Schema.Attribute.JSON;
+    OrderItem: Schema.Attribute.Component<'order.order-item', true>;
     publishedAt: Schema.Attribute.DateTime;
+    stare: Schema.Attribute.Enumeration<['pending', 'paid', 'failed']>;
     stripeSessionId: Schema.Attribute.String;
-    total: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    total: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -981,7 +980,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
-      'api::orded.orded': ApiOrdedOrded;
+      'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
