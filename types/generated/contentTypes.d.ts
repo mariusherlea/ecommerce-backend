@@ -414,16 +414,20 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.String;
+    billingAddress: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
+    email: Schema.Attribute.String;
     items: Schema.Attribute.Component<'order.order-item', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
       Schema.Attribute.Private;
     OrderItem: Schema.Attribute.Component<'order.order-item', true>;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    shippingAddress: Schema.Attribute.String;
     stare: Schema.Attribute.Enumeration<['pending', 'paid', 'failed']>;
     stripeSessionId: Schema.Attribute.String;
     total: Schema.Attribute.Decimal;

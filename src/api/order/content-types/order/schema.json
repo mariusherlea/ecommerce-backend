@@ -14,9 +14,6 @@
     "stripeSessionId": {
       "type": "string"
     },
-    "email": {
-      "type": "email"
-    },
     "total": {
       "type": "decimal"
     },
@@ -37,6 +34,21 @@
       "type": "component",
       "component": "order.order-item",
       "repeatable": true
+    },
+    "email": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "shippingAddress": {
+      "type": "string"
+    },
+    "billingAddress": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
     }
   }
 }
