@@ -1,18 +1,21 @@
 //config/middlewares.js
+
 export default [
-  'strapi::logger',
   'strapi::errors',
+  'strapi::security',
+
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
-      origin: ['*'], // pe durata dezvoltării
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      origin: ['http://localhost:3000'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+      headers: ['Content-Type', 'Authorization'],
+      credentials: true,
     },
   },
-  'strapi::security',
+
   'strapi::poweredBy',
+  'strapi::logger',
   'strapi::query',
   'strapi::body',
   'strapi::session',
