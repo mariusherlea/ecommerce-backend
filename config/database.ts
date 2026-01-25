@@ -22,16 +22,20 @@ export default ({ env }) => {
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },
-   postgres: {
+  
+postgres: {
   connection: {
     connectionString: env('DATABASE_URL'),
-    ssl: env.bool('DATABASE_SSL', true),
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
   pool: {
     min: env.int('DATABASE_POOL_MIN', 2),
     max: env.int('DATABASE_POOL_MAX', 10),
   },
 },
+
     sqlite: {
       connection: {
         filename: path.join(__dirname, '..', '..', env('DATABASE_FILENAME', '.tmp/data.db')),
