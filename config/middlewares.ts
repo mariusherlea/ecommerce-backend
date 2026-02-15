@@ -5,12 +5,15 @@ export default [
   'strapi::security',
 
   {
-    name: 'strapi::cors',
+    name: "strapi::cors",
     config: {
-      origin: ['http://localhost:3000'],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization'],
-      credentials: true,
+      enabled: true,
+      origin: [
+        "http://localhost:3000",
+        "https://ecommerce-frontend-zeta-liard.vercel.app",
+      ],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
     },
   },
 
