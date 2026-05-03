@@ -10,7 +10,7 @@ export default [
       enabled: true,
       origin: [
         "http://localhost:3000",
-        "https://ecommerce-frontend-zeta-liard.vercel.app",
+        "https://ecommerce-frontend-otpz.vercel.app",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
       headers: ["Content-Type", "Authorization", "Origin", "Accept"],
