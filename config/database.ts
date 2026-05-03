@@ -1,3 +1,4 @@
+//config/database.ts
 import path from 'path';
 
 export default ({ env }) => {
