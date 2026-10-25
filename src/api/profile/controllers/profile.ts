@@ -26,7 +26,10 @@ export default {
           data: {
             ...(fullName !== undefined && { fullName }),
             ...(phone !== undefined && { phone }),
-            ...(address !== undefined && { address }),
+            ...(address !== undefined && {
+    address_line1: address,
+    shippingAddress: address,
+  }),
           },
         });
 
